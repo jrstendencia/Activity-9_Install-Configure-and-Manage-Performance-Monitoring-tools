@@ -1,0 +1,14 @@
+---
+- name: Install Prometheus on Ubuntu
+  apt:
+    name: prometheus
+    state: present
+  when: ansible_distribution == 'Ubuntu'
+  become: yes
+
+- name: Install Prometheus on CentOS
+  yum:
+    name: prometheus
+    state: present
+    enablerepo: prometheus
+  when: ansible_distribution == 'CentOS'
